@@ -1,0 +1,120 @@
+/* Here before the numbers are added to the linkedlist, the numbers are reversed. Also the result of the 
+addition of the two numbers is also reversed */
+
+
+
+public class Node {
+	int data;
+	Node next;
+	public Node(int d)
+	{
+		this.data=d;
+	    this.next=null;
+	}
+	void appendToTail(int d)
+	{
+		Node end=new Node(d);
+		Node n=this;
+		while(n.next!=null)
+		{
+			n=n.next;
+		}
+		n.next=end;
+		
+	}
+	Node reverse()
+	{
+		if (this == null || this.next == null)
+			return this;  //empty or just one node in list
+
+			Node Second = this.next;
+
+			//store third node before we change 
+			Node Third = Second.next;  
+
+			//Second's next pointer
+			Second.next = this;  //second now points to head
+			this.next = null;  //change head pointer to NULL
+
+			//only two nodes, which we already reversed
+			if (Third == null)
+			return Second;  
+			
+			while (Third != null)
+			{ 
+			Node NextNode = Third.next;
+
+			Third.next = Second;
+
+			/*  repeat the process, but have to reset
+			     the Second and Third
+			*/
+
+			Second =Third;
+			Third = NextNode;  
+			}
+
+			Node r = Second; //reset the head node
+			return r;
+	}
+public Node add(Node num2)
+{
+	Node result;
+	if(this==null&&num2==null)
+		return null;
+	if(this==null)
+		return num2;
+	if(num2==null)
+		return this;
+	Node num1=this;
+	int sum=0;
+	int r=0;
+	sum=(sum+num1.data+num2.data)%10;
+	result=new Node(sum);
+	r=(num1.data+num2.data)/10;
+	num1=num1.next;
+	num2=num2.next;
+	while(num1!=null&& num2!=null)
+	 {
+		sum=(num1.data+num2.data+r)%10;
+		result.appendToTail(sum);
+		r=(num1.data+num2.data+r)/10;
+		num1=num1.next;
+		num2=num2.next;
+	 }
+	while(num1!=null)
+	{
+		sum=(r+num1.data)%10;
+		result.appendToTail(sum);
+		r=(r+num1.data)/10;
+		num1=num1.next;
+	}
+	while(num2!=null)
+		{
+		sum=(r+num2.data)%10;
+		result.appendToTail(sum);
+		r=(r+num2.data)/10;
+		num2=num2.next;
+		}
+	return result;
+}
+	public static void main(String args[])
+	{
+		/*Numbers to add are 549 and 65*/
+		Node num1=new Node(5);
+		num1.appendToTail(4);
+		num1.appendToTail(9);
+		Node rev1=num1.reverse();
+		Node num2=new Node(6);
+		num2.appendToTail(5);
+		Node rev2=num2.reverse();
+		Node sum=rev1.add(rev2);
+		Node resultRev=sum.reverse();
+		while(resultRev!=null)
+		{
+			System.out.print(resultRev.data);
+			resultRev=resultRev.next;
+		}
+	}
+
+}
