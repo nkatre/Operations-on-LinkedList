@@ -1,0 +1,63 @@
+package Demo;
+
+public class LinkedListKthElementFromEnd
+{
+ public static void main(String[] args)
+ {
+  Node head = new Node(1);
+  head.append(2).append(3).append(4).append(5).append(6).append(7)
+    .append(8).append(9);
+  Node result = findKFromEnd(head);
+  System.out.println(result.value);
+ }
+
+ private static Node findKFromEnd(Node head)
+ {
+/**The basic algorithm would be
+Take two pointers
+Make both pointing to first node
+Increment first loop with two nodes and second with one, at a time.
+Loop until the 1st loop reaches the end. At this point, the 2nd will be at the middle.
+*/
+	 
+	 // Exception Cases
+	 if(head==null)
+		 return head;
+	 if(head.next==null)  // If List contains only two elements
+		 return head.next;
+   // End of Exception Cases
+	 
+	 // If List contains more than two elements then
+	 
+	 Node p1=head;
+	 Node p2=head;
+	 while ( p2.next != null ) {
+		    p2 = p2.next;
+		    if (p2.next != null) {
+		        p2 = p2.next;
+		        p1 = p1.next;
+		    }
+		}
+  return p1;
+  
+ }
+
+ private static class Node
+ {
+  public Node next;
+  public int value;
+
+  public Node(int value)
+  {
+   this.value = value;
+  }
+
+  public Node append(int value)
+  {
+   Node node = new Node(value);
+   next = node;
+   return node;
+  }
+ }
+
+}
