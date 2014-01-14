@@ -13,7 +13,9 @@ public class LinkedListKthElementFromEnd
  {
   Node ahead = head;
   while (k-- > 0)
+  {
    ahead = ahead.next;
+   }
   while (ahead != null)
   {
    head = head.next;
