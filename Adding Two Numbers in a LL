@@ -13,7 +13,9 @@ public class Node {
 	}
 	void appendToTail(int d)
 	{
+	        // Create a new node which will be appended to the end
 		Node end=new Node(d);
+		// traverse till you reach the current end then append the end node
 		Node n=this;
 		while(n.next!=null)
 		{
