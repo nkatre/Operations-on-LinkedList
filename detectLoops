@@ -85,6 +85,7 @@ public class LinkedList<T> {
         
         public synchronized boolean isCyclePresent()
         {
+        // initialize slow and fast to head node of the LL
                 LinkedListNode<T> slowItr = head;
                 LinkedListNode<T> fastItr = head;
 
