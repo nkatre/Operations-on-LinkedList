@@ -94,6 +94,7 @@ public class LinkedList<T> {
                 
                 while ( true)
                 {
+                // since head is not null, hence initialize slow and fast to the next node in the LL
                         slowItr = slowItr.getNext();
                         fastItr = fastItr.getNext();
                         
