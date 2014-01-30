@@ -107,6 +107,8 @@ public class LinkedList<T> {
                                 return false;
                         else if ( fastItr == slowItr) // reference check alone is enough. No need for equals()
                                 return true;
+               // Please remember *three* if conditions inside the while loop and one if condition before while loop
+               
                 }                
         }
 }
