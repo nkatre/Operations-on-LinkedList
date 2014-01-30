@@ -22,41 +22,25 @@ public class Node {
 		n.next=end;
 		
 	}
-	Node reverse()
-	{
-		if (this == null || this.next == null)
-			return this;  //empty or just one node in list
+	
+	Node Reverse(Node current, Node pre)
+       {
+        Node next=current.next;
+        current.next=pre;
+        
+        if(next==null)
+             return current;
 
-			Node Second = this.next;
+        return Reverse(next,current);
+        }
 
-			//store third node before we change 
-			Node Third = Second.next;  
+        Node Reverse(Node head)
+        {
+        if(head==null)
+               return null;
 
-			//Second's next pointer
-			Second.next = this;  //second now points to head
-			this.next = null;  //change head pointer to NULL
-
-			//only two nodes, which we already reversed
-			if (Third == null)
-			return Second;  
-			
-			while (Third != null)
-			{ 
-			Node NextNode = Third.next;
-
-			Third.next = Second;
-
-			/*  repeat the process, but have to reset
-			     the Second and Third
-			*/
-
-			Second =Third;
-			Third = NextNode;  
-			}
-
-			Node r = Second; //reset the head node
-			return r;
-	}
+        return Reverse(head,null);
+        }
 public Node add(Node num2)
 {
 	Node result;
