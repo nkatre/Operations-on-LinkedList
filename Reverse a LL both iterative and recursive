@@ -31,8 +31,8 @@ Node ReverseIterative(Node head)
         if(head==null)
                 return null;
                 
-        Node pre=null;
-        Node current=head;
+        Node pre=null;  // this statement 
+        Node current=head;  // this statement is the same as the recursive approach
         
         while(current!=null)
         {
