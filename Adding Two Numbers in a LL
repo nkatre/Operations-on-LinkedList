@@ -54,7 +54,7 @@ public Node add(Node num2)
 		return this;
 	Node num1=this;
 	int sum=0;
-	int r=0;
+	int r=0; // carry integer
 	sum=(sum+num1.data+num2.data)%10;
 	result=new Node(sum);
 	r=(num1.data+num2.data)/10;
