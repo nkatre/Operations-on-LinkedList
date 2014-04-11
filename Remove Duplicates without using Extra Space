@@ -19,7 +19,8 @@ public class InterviewQuestions2_1 {
     //TODO myComparater would be static class or not depends on invoking methods , invoking position; please see chapt2 notes
     public static class myComparater implements Comparator<Integer> {
         @Override
-        public int compare(Integer o1, Integer o2) {  // compare() method has Objects of Generic type as arguments
+        public int compare(Integer o1, Integer o2) {  // compare() method has Objects of <T> type as arguments, where <T> is 
+                                                      // the Generic type.
             return o1.compareTo(o2);
         }
     }
