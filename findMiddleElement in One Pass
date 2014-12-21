@@ -21,10 +21,10 @@ Loop until the 1st loop reaches the end. At this point, the 2nd will be at the m
 */
 	 
 	 // Exception Cases
-	 if(head==null)
-		 return head;
-	 if(head.next==null)  // If List contains only two elements
-		 return head.next;
+	 if(head==null)     // No elements present
+		 return null;
+	 if(head.next==null)   // Only one element present
+		 return head;             
    // End of Exception Cases
 	 
 	 // If List contains more than two elements then
