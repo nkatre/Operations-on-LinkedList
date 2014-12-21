@@ -104,8 +104,7 @@ Long -> compare(long x, long y) , compareTo(Long anotherLong)
 Float -> compare(float f1, float f2) , compareTo(Float anotherFloat)
 Double -> compare(double d1, double d2) , compareTo(Double anotherDouble)  
 Boolean -> compare(boolean x, boolean y) , compareTo(Boolean b)
-String -> compareTo(String anotherString) , compareToIgnoreCase(String str)  "In String, both compare and
-compareTo methods have String objects"
+String -> compareTo(String anotherString) , compareToIgnoreCase(String str)  "In String, no compare() method"
 
 
 Please NOTE: 
