@@ -1,5 +1,7 @@
 /* Reverse a LinkedList both recursively and iteratively.
-   Always remember for reversing the nodes, we require 3 references - PREV, CURRENT & NEXT
+   Always remember for reversing the nodes, we require 3 references - PREV, CURRENT & NEXT.
+   Out of which NEXT can be easily found since every node in a singly LL has data and next as parameters.
+   THUS, NEXT can be found easily.
 */
 
 
