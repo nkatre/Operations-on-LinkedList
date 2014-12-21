@@ -1,117 +1,71 @@
-public class LinkedList<T> {
-        
-        public static class LinkedListNode<T>
-        {
-                private T data;
-                private LinkedListNode<T> next;
-                
-                public T getData() {
-                        return data;
-                }
-                public void setData(T data) {
-                        this.data = data;
-                }
-                public LinkedListNode<T> getNext() {
-                        return next;
-                }
-                public void setNext(LinkedListNode<T> next) {
-                        this.next = next;
-                }
-                public LinkedListNode(T data) {
-                        super();
-                        this.data = data;
-                }
-                
-                @Override
-                public String toString() {
-                        return "LinkedListNode [data=" + data + "]";
-                }
-                
-        }
-        
-        private LinkedListNode<T> head = null;
-        private LinkedListNode<T> tail = null;
-        
-        public LinkedList()
-        {
-                head = null;
-        }
-        
-        public synchronized void addToBegin(T data)
-        {
-                LinkedListNode<T> newNode = new LinkedListNode<T>(data);
-                newNode.setNext(head); // Also takes care of head == NULL
-                head = newNode;
-                if ( tail == null)
-                        tail = head;
-        }
-        
-        public synchronized void addToEnd(T data)
-        {
-                LinkedListNode<T> newNode = new LinkedListNode<T>(data);
-                
-                if ( tail == null) // linkedlist is empty
-                {
-                        tail = head = newNode;
-                } else {
-                        tail.setNext(newNode);
-                        tail = newNode;
-                }
-        }
+// This can be implemented in the same way as "Find the middle element in the LL"
 
-        @Override
-        public String toString() {
-                
-                StringBuilder strBuilder = new StringBuilder();
-                LinkedListNode<T> itr = head;
-                while ( (itr != null) && (itr.getNext() != null))
-                {
-                        strBuilder.append(itr).append("\n");
-                        itr = itr.getNext();
-                }
-                
-                if ( itr != null)
-                        strBuilder.append(itr);
-                
-                return strBuilder.toString();
-        }
-        
-        public synchronized void insertCycle()
-        {
-                if ( null != tail)
-                        tail.setNext(head);
-        }
-        
-        
-        public synchronized boolean isCyclePresent()
-        {
-        // initialize slow and fast to head node of the LL
-                LinkedListNode<T> slowItr = head;
-                LinkedListNode<T> fastItr = head;
 
-                if ( null == slowItr) 
-                        return false;   // No cycle in empty linked-list
-                
-                while ( true)
-                {
-                // since head is not null, hence initialize slow and fast to the next node in the LL
-                        
-                        fastItr = fastItr.getNext();
-                        slowItr = slowItr.getNext();
-                        
-                        if ( null == fastItr)  // Seen the tail and no cycle, return false
-                                return false; 
-                        
-                        // No need to check for null check for slow as fast 
-                        // is ahead and linked-list is expected to be static
-                        fastItr = fastItr.getNext();
-                        
-                        if ( null == fastItr)
-                                return false;
-                        else if ( fastItr == slowItr) // reference check alone is enough. No need for equals()
-                                return true;
-               // Please remember *three* if conditions inside the while loop and one if condition before while loop
-               
-                }                
-        }
+package Demo;
+
+public class LinkedListKthElementFromEnd
+{
+ public static void main(String[] args)
+ {
+  Node head = new Node(1);
+  head.append(2).append(3).append(4).append(5).append(6).append(7)
+    .append(8).append(9);
+  boolean trigger = findLoop(head);
+  if(trigger)
+        System.out.println("Loop Detected");
+  else
+        System.out.println("Loop Absent");
+ }
+
+ private static boolean findLoop(Node head)
+ {
+/**The basic algorithm would be
+Take two pointers
+Make both pointing to first node
+Increment first loop with two nodes and second with one, at a time.
+Loop until the 1st loop reaches the end (which in case of loop will never happen BUT if loop is not present then it eill reach end). 
+*/
+	 
+	 // Exception Cases
+	 if(head==null)             // no element present hence no loop
+		 return false;
+	 
+         if(head.next==null)    // only one element present then no loop
+                return false;
+	 
+	 // If List contains more than two elements then
+	 
+	 Node p1=head;
+	 Node p2=head;
+	 while ( p2.next != null ) {
+		    p2 = p2.next;
+		    if(p2==p1)
+		        return true; // loop is present
+		    if (p2.next != null) {
+		        p2 = p2.next;
+		        p1 = p1.next;
+		    }
+		}
+          return false; // end of while suggest that loop is absent
+  
+ }
+
+ private static class Node
+ {
+  public Node next;
+  public int value;
+
+  public Node(int value)
+  {
+   this.value = value;
+  }
+
+  public Node append(int value)
+  {
+   Node node = new Node(value);
+   next = node;
+   return node;
+  }
+ }
+
 }
