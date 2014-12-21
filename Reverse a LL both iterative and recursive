@@ -4,7 +4,7 @@
    Out of which NEXT can be easily found since every node in a singly LL has data and next as parameters.
    THUS, NEXT can be found easily.
    2. Then we just have to point CURRENT.next to PREV
-   3. Continue doing this till the NEXT is not null (i.e. reached the end of LL)
+   3. Continue doing 1. and 2. till the NEXT is not null (i.e. reached the end of LL)
 */
 
 
