@@ -1,5 +1,5 @@
 /* Reverse a LinkedList both recursively and iteratively.
-   Always remember for reversing the nodes, we require 3 references, PREV, CURRENT & NEXT
+   Always remember for reversing the nodes, we require 3 references - PREV, CURRENT & NEXT
 */
 
 
