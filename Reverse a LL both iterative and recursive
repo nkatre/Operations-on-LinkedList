@@ -43,10 +43,11 @@ Node ReverseIterative(Node head)
                 
         Node pre=null;  // this statement 
         Node current=head;  // this statement is the same as the recursive approach
+        Node next=null;
         
         while(current!=null)
         {
-                Node next=current.next;  // this statement
+                next=current.next;  // this statement
                 current.next=pre;    // and this statement are the same from the recursive method above
                 
                 pre=current;
