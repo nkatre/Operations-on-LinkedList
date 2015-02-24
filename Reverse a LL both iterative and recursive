@@ -24,17 +24,6 @@ Node Reverse(Node current, Node prev)
          
 }
 
-Node Reverse(Node head)
-{
-        if(head==null)
-               return null;
-
-        return Reverse(head,null);
-}
-
-
-
-
 
 //Iterative code
 Node ReverseIterative(Node head)
