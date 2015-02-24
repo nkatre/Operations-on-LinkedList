@@ -11,9 +11,6 @@
 // Recursive code
 Node Reverse(Node current, Node prev)
 {
-
-// Please read the comments and follow them religiously. The numericals imply what to understand first.
-      
       if(current==null)
          return prev;
          
