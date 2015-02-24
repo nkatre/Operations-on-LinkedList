@@ -9,18 +9,19 @@
 
 
 // Recursive code
-Node Reverse(Node current, Node pre)
+Node Reverse(Node current, Node prev)
 {
 
 // Please read the comments and follow them religiously. The numericals imply what to understand first.
       
-      2. Node next=current.next;   // need to store the next node, inorder to continue the traversal till the end of the List
-      1. current.next=pre;         // reversing is all about pointing to the prev node
-        
-      3.  if(next==null)            // but what if there is no next node
-             return current;
-
-      4. return Reverse(next,current);     // but what if there is next node
+      if(current==null)
+         return prev;
+         
+      Node next = current.next;
+      current.next = prev;
+      
+      return(next,current);
+         
 }
 
 Node Reverse(Node head)
