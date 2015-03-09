@@ -17,7 +17,7 @@ Node Reverse(Node current, Node prev)
       Node next = current.next;
       current.next = prev;
       
-      return(next,current);
+      return Reverse(next,current);
          
 }
 
